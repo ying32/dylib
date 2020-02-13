@@ -1,7 +1,7 @@
 ### 简介
 
 dylib是从govcl的api包中分离出来，可以方便其它使用。
-dylib实现现了一个通用的共享库调用，可以在windows、linux、macOS下不需要任何改变实现通用。
+dylib实现了一个通用的共享库调用，可以在windows、linux、macOS下不需要任何改变实现通用。
 Window下使用syscall.NewLazyDLL加载dll，linux与macOS下使用dlopen加载，然后使用dlsym来获取,
 通过封装，使用接口与Windows下的一模一样，如此达到通用，最多实现12个参数的过程。
 
@@ -9,7 +9,7 @@ Window下使用syscall.NewLazyDLL加载dll，linux与macOS下使用dlopen加载�
 
 ```go
 
-import "gitee.com/ying32/govcl/vcl/dylib"
+import "github.com/ying32/dylib"
 
 var (
     lib = dylib.NewLazyDLL("xxx.dll") // 或者 dylib.NewLazyDLL("xxx.so") 或者 dylib.NewLazyDLL("xxx.dylib")
@@ -32,7 +32,7 @@ func Func2() float32 {
 }
 
 // 如果是外部的共享库返回float32或者float64则另使用补丁方式，暂时不支持arm
-// import "github.com/ying32/govcl/dylib/floatpatch"
+// import "github.com/ying32/dylib/floatpatch"
 // float32
 func Func2() float32 {
     _Func2.Call()  
