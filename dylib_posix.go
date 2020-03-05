@@ -174,9 +174,9 @@ func (l *LazyDLL) libFullPath(name string) string {
 				return _x64path
 			} else {
 				// 先兼容之前的，以后要移除，因为以前的不熟造成的错误。
-				if fileExists(_x86path) {
-					return _x86path
-				}
+				//if fileExists(_x86path) {
+				//	return _x86path
+				//}
 			}
 		} else {
 			if fileExists(_x86path) {
