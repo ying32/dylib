@@ -1,3 +1,7 @@
+*通用的跨平台动态连接库调用, 支持 dll、so、dylib。 Move from: github.com/ying32/govcl/vcl/dylib*  
+
+*Universal cross-platform dynamic link library call, support dll, so, dylib. Move from: github.com/ying32/govcl/vcl/dylib*   
+
 ### 简介
 
 dylib是从govcl的api包中分离出来，可以方便其它使用。
