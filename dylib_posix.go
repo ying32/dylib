@@ -234,7 +234,10 @@ type LazyProc struct {
 }
 
 func (p *LazyProc) Addr() uintptr {
-	p.Find()
+	err := p.Find()
+	if err != nil {
+		fmt.Println(err)
+	}
 	return p.p
 }
 
@@ -248,7 +251,7 @@ func (p *LazyProc) Find() error {
 		// 这里不管了
 	}
 	if p.p == 0 {
-		return errors.New("proc\"" + p.Name + "\" not find.")
+		return errors.New("proc \"" + p.Name + "\" not find.")
 	}
 	return nil
 }
@@ -262,9 +265,9 @@ func (p *LazyProc) Call(a ...uintptr) (uintptr, uintptr, error) {
 }
 
 func (p *LazyProc) CallOriginal(a ...uintptr) (r1, r2 uintptr, lastErr error) {
-	p.Find()
-
-	if p.p == 0 {
+	err := p.Find()
+	if err != nil {
+		fmt.Println(err)
 		return 0, 0, syscall.EINVAL
 	}
 	var ret C.uint64_t
