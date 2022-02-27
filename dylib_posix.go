@@ -26,7 +26,7 @@ package dylib
 	static uintptr_t libLookup(uintptr_t h, const char* name) {
 	     void* r = dlsym((void*)h, name);
 	     if (r == NULL) {
-			 printf("dlsym err: %s\n", (char*)dlerror());
+			 //printf("dlsym err: %s\n", (char*)dlerror());
 	         return 0;
 	     }
 	     return (uintptr_t)r;
